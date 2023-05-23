@@ -25,7 +25,7 @@ class StopwatchWithResults extends Stopwatch {
     this.dom.resetListBtn.addEventListener('click', () => this.resetList());
   }
 
-  protected renderList(): void {
+  private renderList(): void {
     /*
     Funkcja ta powinna czyścić zawartość this.dom.resultsList, a następnie renderować w niej nowe elementy li
     na podstawie zawartości tablicy this.results. Każdy jej element powinien być renderowany bez żadnych zmian.

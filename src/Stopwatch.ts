@@ -68,7 +68,7 @@ abstract class Stopwatch {
     return `${pad0(mm)}:${pad0(ss)}:${pad0(ms).substr(0, 2)}`;
   } 
 
-  protected  renderTime():void {
+  private renderTime():void {
     /*
     Funkcja ta powinna renderować w stopwatch__current-time zawartość obiektu this.currentTime.
     Oczywiście wcześniej należy sformatować czas przy użyciu funkcji this.formatTime. 
@@ -76,16 +76,18 @@ abstract class Stopwatch {
     this.dom.currentTime.innerHTML = this.formatTime(this.currentTime);
   }
 
-  protected start():void {
+  private start():void {
     /*
     Funkcja ta powinna wystartować interwał, który będzie wykonywał się co milisekundę.
     Powinien on każdorazowo włączać funkcję this.step
 
     Dla wygody przypisz ten interwał do this.timer
     */
-    this.timer = setInterval(() => {
-      this.step();
-    }, 1);
+    if (this.timer == null){
+      this.timer = setInterval(() => {
+        this.step();
+      }, 1);
+    }
   }
 
   private step(): void {
