@@ -52,7 +52,7 @@ class StopwatchWithResults extends Stopwatch {
     this.renderList();
   }
 
-  resetList() {
+  private resetList():void {
     /*
     Funkcja ta powinna czyścić tablicę this.results oraz zawartość this.dom.resultsList
     */
