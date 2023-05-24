@@ -11,7 +11,7 @@ interface StopwatchDom {
 abstract class Stopwatch {
   
   protected currentTime: number = 0;
-  private timer: number | null = null;
+  private timer: number | null | NodeJS.Timer = null;
   protected dom = <StopwatchDom> {};
   
   constructor(element: HTMLDivElement) {
@@ -86,7 +86,7 @@ abstract class Stopwatch {
     if (this.timer == null){
       this.timer = setInterval(() => {
         this.step();
-      }, 1);
+      }, 1) as unknown as number;
     }
   }
 
@@ -104,7 +104,7 @@ abstract class Stopwatch {
     Funkcja ta powinna zatrzymywać interval przypisany do this.timer.
     */
     
-    clearInterval(this.timer);
+    this.timer && clearInterval(this.timer);
     this.timer=null;
   }
 
